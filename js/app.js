@@ -1,11 +1,9 @@
 // ==========================================================================
 // SASYA SANJEEVINI - CORE APPLICATION LOGIC
 // Live Search • Filters • WhatsApp Cart • Soil Calculator • Flipbook
+// Data loaded from products-data.js (CATEGORIES, PRODUCTS, SOIL_CALCULATOR_PRESETS)
 // ==========================================================================
 
-import { CATEGORIES, PRODUCTS, SOIL_CALCULATOR_PRESETS } from './products-data.js';
-
-// Application State
 const state = {
   activeCategory: 'all',
   searchQuery: '',
@@ -171,14 +169,20 @@ function renderProducts() {
   grid.innerHTML = filtered.map(prod => {
     const selectedVarIdx = state.selectedVariants[prod.id] || 0;
     const currentVar = prod.variants[selectedVarIdx] || prod.variants[0];
-
-    const variantButtons = prod.variants.map((v, idx) => `
+    const variantButtons = prod.variants.map((v, idx) => {
+      const shortLabel = v.label
+        .replace(' (Bulk Wholesale)', ' (Bulk)')
+        .replace(' (Heavy Duty)', '')
+        .replace(' (Standard)', '')
+        .replace(' (Medium)', '');
+      return `
       <button class="variant-btn ${idx === selectedVarIdx ? 'active' : ''}" 
               data-product-id="${prod.id}" 
-              data-variant-idx="${idx}">
-        ${v.label}
+              data-variant-idx="${idx}"
+              title="${v.label}">
+        ${shortLabel}
       </button>
-    `).join('');
+    `;}).join('');
 
     const badgeHtml = prod.tag ? `<span class="product-badge-tag">${prod.tag}</span>` : '';
 
@@ -186,7 +190,7 @@ function renderProducts() {
       <div class="product-card" data-product-id="${prod.id}">
         <div class="product-thumb-box" data-action="quick-view" data-product-id="${prod.id}">
           ${badgeHtml}
-          <img src="${prod.image}" alt="${prod.name}" class="product-thumb" loading="lazy">
+          <img src="${prod.image}" alt="${prod.name}" class="product-thumb" onerror="this.onerror=null; this.src='assets/logo.png';">
           <button class="product-quick-view-btn" title="Quick Details" data-action="quick-view" data-product-id="${prod.id}">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
           </button>

@@ -2,7 +2,7 @@
 // Sourced directly from physical store inventory & PDF catalogue
 // Mobile / WhatsApp: +91 8296599392 | Location: Hanumantha Nagar, Bangalore
 
-export const CATEGORIES = [
+var CATEGORIES = [
   { id: 'all', name: 'All Products', icon: 'sparkles', count: 38 },
   { id: 'manures-fertilizers', name: 'Manures & Fertilizers', icon: 'sprout', count: 11 },
   { id: 'growing-media', name: 'Potting Mix & Media', icon: 'mountain', count: 7 },
@@ -12,7 +12,7 @@ export const CATEGORIES = [
   { id: 'plates-accessories', name: 'Drip Trays & Saucers', icon: 'disc', count: 2 }
 ];
 
-export const PRODUCTS = [
+var PRODUCTS = [
   // ---------------- MANURES & FERTILIZERS ----------------
   {
     id: 'goat-manure-powder',
@@ -827,7 +827,7 @@ export const PRODUCTS = [
 ];
 
 // Soil recipe generator data
-export const SOIL_CALCULATOR_PRESETS = {
+var SOIL_CALCULATOR_PRESETS = {
   potSizes: [
     { id: '8', name: '8" Small Pot', volumeLiters: 4, soilKg: 3, compostKg: 1, cocopeatKg: 0.5 },
     { id: '10', name: '10" Medium Pot', volumeLiters: 8, soilKg: 6, compostKg: 2, cocopeatKg: 1 },
@@ -843,3 +843,5 @@ export const SOIL_CALCULATOR_PRESETS = {
     { id: 'succulents', name: '🌵 Succulents & Cacti', ratioSoil: 30, ratioCompost: 10, ratioCocopeat: 20, special: 'Perlite (40%) + Grit' }
   ]
 };
+
+
