@@ -1,0 +1,23 @@
+# Node
+node_modules/
+package-lock.json
+
+# Large Raw Source Assets (Rendered high-res versions exist in assets/)
+*.pdf
+photo/
+extracted_pdf_images/
+
+# Python scripts
+*.py
+*.pyc
+__pycache__/
+scraped_bundle.js
+all_products_raw.js
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Build & Duplicate dirs
+public/
+
